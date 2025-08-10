@@ -3,10 +3,7 @@
 @section('content')
     <div class="container mt-3">
         <div id="alertInfo"></div>
-        <h3 class="mb-4">My Meeting</h3>
-        <button id="addMeetingRoomBtn" type="button" class="btn btn-primary">
-            <i class="fa-solid fa-plus me-1"></i> Create Meeting
-        </button>
+        <h3 class="mb-4">Friend List</h3>
         <table id="userTable" class="table table-light table-striped mt-4 text-center">
             <thead>
                 <th>#</th>
