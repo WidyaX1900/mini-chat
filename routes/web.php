@@ -20,4 +20,5 @@ Route::middleware('auth')->group(function () {
     // Chat Routes
     Route::get('/chatting/show/{id}', [ChattingController::class, 'show']);
     Route::post('/chatting/send', [ChattingController::class, 'send']);
+    Route::get('/chatting/get_messages', [ChattingController::class, 'get_messages']);
 });

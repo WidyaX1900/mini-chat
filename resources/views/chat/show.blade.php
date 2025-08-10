@@ -6,7 +6,13 @@
             <div class="bg-primary text-light p-2 rounded rounded-bottom-0">
                 <h6>{{ $user->name }}</h6>
             </div>
-            <div id="chatContent" class="border p-3 h-50 d-flex flex-column-reverse overflow-y-auto overflow-x-hidden mb-3"></div>
+            <div id="chatContent" class="border p-3 h-50 d-flex flex-column-reverse overflow-y-auto overflow-x-hidden mb-3">
+                <div id="chatLoading" class="w-100 h-100 d-flex justify-content-center align-items-center">
+                    <div class="spinner-grow text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>                    
+                </div>
+            </div>
             <form id="chatForm">
                 <div class="mb-3">
                     @csrf

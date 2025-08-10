@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateChattingRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ChattingController extends Controller
@@ -68,5 +69,23 @@ class ChattingController extends Controller
                 'status' => 'success'
             ]);
         }
+    }
+
+    /**
+     * Retreive the messages.
+     */
+    public function get_messages(Request $request)
+    {
+        $sender_id = $request->sender_id;
+        $receiver_id = $request->receiver_id;
+
+        $messages = DB::table('chattings')
+        ->select(['sender_id', 'message'])
+        ->whereRaw('sender_id = ? AND receiver_id = ?', [$sender_id, $receiver_id])
+        ->orWhereRaw('sender_id = ? AND receiver_id = ?', [$receiver_id, $sender_id])
+        ->orderBy('id', 'desc')
+        ->get();
+        
+        return response()->view('components.messages', ['messages' => $messages]);
     }
 }
