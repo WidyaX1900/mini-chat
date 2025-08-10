@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\MeetingRoomController;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +15,5 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/', function() {
-        return view('index');
-    });
+    Route::get('/', [HomeController::class, 'index']);
 });

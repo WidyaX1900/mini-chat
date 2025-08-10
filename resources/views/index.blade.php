@@ -11,15 +11,17 @@
                 <th>Action</th>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Rangga Widya</td>
-                    <td>
-                        <a href="" class="btn btn-sm btn-primary me-2">
-                            <i class="fa-solid fa-comment-dots"></i>
-                        </a>
-                    </td>
-                </tr>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>
+                            <a href="" class="btn btn-sm btn-primary me-2">
+                                <i class="fa-solid fa-comment-dots"></i>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
