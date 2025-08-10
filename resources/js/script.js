@@ -12,8 +12,10 @@ $(function() {
             const message = $("#message").val();
             if(message.trim() === "") return;            
             
-            createMessageEl(message);
             socket.emit("send-message", { message, room });            
+            
+            ajaxSendChat(new FormData($(this)[0]));                        
+            createMessageEl(message);            
         });
 
         socket.on("receive-message", ({ message }) => {
@@ -39,5 +41,19 @@ $(function() {
 
         $("#chatContent").prepend(content);
     };
+
+    const ajaxSendChat = (data) => {
+        $.ajax({
+            url: "/chatting/send",
+            type: "post",
+            data: data,
+            dataType: "json",
+            contentType: false,
+            processData: false,
+            error: function (error) {
+                console.log("Error fetching data: ", error);               
+            },
+        });
+    }
 
 });

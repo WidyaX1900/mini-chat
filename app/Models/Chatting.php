@@ -9,4 +9,9 @@ class Chatting extends Model
 {
     /** @use HasFactory<\Database\Factories\ChattingFactory> */
     use HasFactory;
+    protected $fillable = [
+        'sender_id',
+        'receiver_id',
+        'message',
+    ];
 }

@@ -10,9 +10,9 @@
             <form id="chatForm">
                 <div class="mb-3">
                     @csrf
-                    <input type="hidden" id="receiver_id" value="{{ $user->id }}">
-                    <textarea class="form-control mb-1" id="message" rows="2" placeholder="Write message..."></textarea>
-                    <div style="font-size: 12px" class="text-danger"></div>
+                    <input type="hidden" id="receiver_id" name="receiver_id" value="{{ $user->id }}">
+                    <textarea class="form-control mb-1" id="message" name="message" rows="2" placeholder="Write message..."></textarea>
+                    <div id="message-error" style="font-size: 12px" class="text-danger"></div>
                     <button type="submit" class="btn btn-secondary btn-sm">Send</button>
                 </div>
             </form>
