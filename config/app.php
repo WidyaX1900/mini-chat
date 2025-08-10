@@ -52,7 +52,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost/mini-chat/'),
+    'asset_url' => env('ASSETS_URL', 'http://localhost/mini-chat/resources/'),
 
     /*
     |--------------------------------------------------------------------------
