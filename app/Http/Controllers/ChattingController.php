@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ChatHelpers;
 use App\Models\Chatting;
-use App\Http\Requests\StoreChattingRequest;
-use App\Http\Requests\UpdateChattingRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -77,14 +76,8 @@ class ChattingController extends Controller
     public function get_messages(Request $request)
     {
         $sender_id = $request->sender_id;
-        $receiver_id = $request->receiver_id;
-
-        $messages = DB::table('chattings')
-        ->select(['sender_id', 'message'])
-        ->whereRaw('sender_id = ? AND receiver_id = ?', [$sender_id, $receiver_id])
-        ->orWhereRaw('sender_id = ? AND receiver_id = ?', [$receiver_id, $sender_id])
-        ->orderBy('id', 'desc')
-        ->get();
+        $receiver_id = $request->receiver_id;        
+        $messages = ChatHelpers::getMessages($sender_id, $receiver_id);        
         
         return response()->view('components.messages', ['messages' => $messages]);
     }
