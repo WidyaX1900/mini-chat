@@ -16,7 +16,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $user->name }}</td>
                         <td>
-                            <a href="/chat/{{ $user->id }}" class="btn btn-sm btn-primary me-2">
+                            <a href="/chatting/show/{{ $user->id }}" class="btn btn-sm btn-primary me-2">
                                 <i class="fa-solid fa-comment-dots"></i>
                             </a>
                         </td>
